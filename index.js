@@ -20,6 +20,8 @@ const MCQuery = require('mcquery')
 const mongo = require('./mongo')
 const ipterate = require('ipterate');
 
+const config = require('./config')
+
 let count = 0
 let isReachable
 
@@ -27,9 +29,11 @@ start()
 
 async function start() {
     isReachable = (await import('is-port-reachable')).default
-    ipterate.range('0.0.0.0/0').iterateAsync(ip => {
-        return check(ip)
-    })
+    for(range of config.ranges){
+        await ipterate.range(range).iterateAsync(ip => {
+            return check(ip)
+        })
+    }
 }
 
 async function check(host) {
