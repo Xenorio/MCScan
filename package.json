@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ipterate": "^1.1.1",
+    "is-port-reachable": "^4.0.0",
+    "mcquery": "^1.0.3",
+    "mongodb": "^5.5.0"
+  }
+}
